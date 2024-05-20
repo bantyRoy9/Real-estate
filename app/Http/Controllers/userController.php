@@ -15,7 +15,7 @@ class userController extends Controller
     {
         return view('register');
     }
-    public function register(Request $req){
+    public function create(Request $req){
         $req->validate([
             "name"=>"required",
             "email"=> "required|email",
@@ -29,11 +29,29 @@ class userController extends Controller
         $user->email = $req['email'];
         $user->password = md5($req['password']);
         $user->save();
-        return redirect('/userLists');
+        return redirect('userLists');
     }
     public function userLists(){
         $userLists = User::all();
         $data = compact('userLists');
         return view('userLists')->with($data);
+    }
+    public function edit($id, Request $req){
+        
+        $user = User::find($id);
+        if(is_null($user)){
+            return redirect('userLists');
+        }else{
+            
+            return redirect('/')->back();
+        };
+
+    }
+    public function delete($id){
+        $user = User::find($id);
+        if(!is_null($user)){
+            $user->delete();
+        };
+        return redirect()->back();
     }
 }

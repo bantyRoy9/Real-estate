@@ -3,7 +3,7 @@
 <title>Signup</title>
 @endpush()
 @section('main-section')
-<form action="{{ url('/')}}/register" class="m-4" method="post">
+<form action="{{ url('/')}}/userList" class="m-4" method="post">
     @csrf
     <pre>
     @php

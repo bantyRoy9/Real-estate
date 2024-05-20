@@ -17,3 +17,11 @@
     @if (Route::has('')) 
         <x-header title="Home"/>
     @endif
+    <nav
+        class="nav justify-content-center  "
+    >
+        <a class="nav-link active" href="{{url('/')}}" aria-current="page">Home</a>
+        <a class="nav-link" href="{{url('/userLists')}}">UserList</a>
+        <a class="nav-link disabled" href="#">Disabled link</a>
+    </nav>
+    
